@@ -1,0 +1,41 @@
+import express from 'express';
+import cors from 'cors';
+import { connectDB } from './db';
+import registerRouter from './routes/register';
+
+const app = express();
+const PORT = 5000;
+
+// Middleware
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+}));
+app.use(express.json());
+
+// Routes
+app.use('/api', registerRouter);
+
+// Health check
+app.get('/', (_req, res) => {
+    res.json({ status: 'ok', message: 'Pre-Hackathon Backend is running 🚀' });
+});
+
+app.get('/api/health', (_req, res) => {
+    res.json({ status: 'ok', message: 'Pre-Hackathon Backend is running 🚀' });
+});
+
+// Connect DB
+connectDB();
+
+// Start server only if not running in Vercel
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`\n🚀 Pre-Hackathon Backend running on http://localhost:${PORT}`);
+        console.log(`   Health: http://localhost:${PORT}/api/health`);
+        console.log(`   Register: POST http://localhost:${PORT}/api/register\n`);
+    });
+}
+
+export default app;
