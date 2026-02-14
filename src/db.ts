@@ -3,19 +3,24 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGO_URI = process.env.MONGODB_URI!;
+const MONGO_URI = process.env.MONGODB_URI;
 
 if (!MONGO_URI) {
     throw new Error('Please define the MONGODB_URI environment variable inside .env');
 }
 
-let cached = (global as any).mongoose;
-
-if (!cached) {
-    cached = (global as any).mongoose = { conn: null, promise: null };
+// Global interface to prevent TS errors on global.mongoose
+declare global {
+    var mongoose: { conn: mongoose.Connection | null; promise: Promise<mongoose.Mongoose> | null };
 }
 
-export const connectDB = async (): Promise<void> => {
+let cached = global.mongoose;
+
+if (!cached) {
+    cached = global.mongoose = { conn: null, promise: null };
+}
+
+export const connectDB = async (): Promise<mongoose.Connection> => {
     if (cached.conn) {
         return cached.conn;
     }
@@ -38,5 +43,6 @@ export const connectDB = async (): Promise<void> => {
         throw e;
     }
 
-    return cached.conn;
+    // cached.conn is actually the Mongoose instance, but compatible with Connection for basic usage or we return mongoose
+    return cached.conn as unknown as mongoose.Connection;
 };
