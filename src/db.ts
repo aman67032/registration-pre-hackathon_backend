@@ -9,18 +9,18 @@ if (!MONGO_URI) {
     throw new Error('Please define the MONGODB_URI environment variable inside .env');
 }
 
-// Global interface to prevent TS errors on global.mongoose
-declare global {
-    var mongoose: { conn: mongoose.Connection | null; promise: Promise<mongoose.Mongoose> | null };
-}
-
-let cached = global.mongoose;
+/**
+ * Global is used here to maintain a cached connection across hot reloads
+ * in development. This prevents connections growing exponentially
+ * during API Route usage.
+ */
+let cached = (global as any).mongoose;
 
 if (!cached) {
-    cached = global.mongoose = { conn: null, promise: null };
+    cached = (global as any).mongoose = { conn: null, promise: null };
 }
 
-export const connectDB = async (): Promise<mongoose.Connection> => {
+export const connectDB = async (): Promise<typeof mongoose> => {
     if (cached.conn) {
         return cached.conn;
     }
@@ -43,6 +43,5 @@ export const connectDB = async (): Promise<mongoose.Connection> => {
         throw e;
     }
 
-    // cached.conn is actually the Mongoose instance, but compatible with Connection for basic usage or we return mongoose
-    return cached.conn as unknown as mongoose.Connection;
+    return cached.conn;
 };
