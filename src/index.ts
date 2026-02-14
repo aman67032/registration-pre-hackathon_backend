@@ -27,8 +27,8 @@ app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok', message: 'Pre-Hackathon Backend is running 🚀' });
 });
 
-// Connect DB
-connectDB();
+// Connect DB - Removed global call for serverless, handled in routes
+// connectDB();
 
 // Start server only if not running in Vercel
 if (process.env.NODE_ENV !== 'production') {
