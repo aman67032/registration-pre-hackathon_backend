@@ -7,9 +7,10 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
+// Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
-    methods: ['GET', 'POST'],
+    origin: '*', // Allow all origins (for hackathon/dev), restricts to specific domains in prod ideally
+    methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
 }));
 app.use(express.json());
