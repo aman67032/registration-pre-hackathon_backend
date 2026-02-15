@@ -5,6 +5,7 @@ interface IMember {
     email: string;
     whatsApp: string;
     rollNumber: string;
+    residency: 'Hosteller' | 'Day Scholar';
 }
 
 export interface ITeam extends Document {
@@ -13,6 +14,7 @@ export interface ITeam extends Document {
     leaderEmail: string;
     leaderWhatsApp: string;
     leaderRollNumber: string;
+    leaderResidency: 'Hosteller' | 'Day Scholar';
     members: IMember[];
     createdAt: Date;
 }
@@ -22,6 +24,7 @@ const MemberSchema = new Schema<IMember>({
     email: { type: String, required: true, trim: true, lowercase: true },
     whatsApp: { type: String, required: true, trim: true },
     rollNumber: { type: String, required: true, trim: true, uppercase: true },
+    residency: { type: String, required: true, enum: ['Hosteller', 'Day Scholar'] },
 });
 
 const TeamSchema = new Schema<ITeam>(
@@ -31,6 +34,7 @@ const TeamSchema = new Schema<ITeam>(
         leaderEmail: { type: String, required: true, trim: true, lowercase: true },
         leaderWhatsApp: { type: String, required: true, trim: true },
         leaderRollNumber: { type: String, required: true, trim: true, uppercase: true },
+        leaderResidency: { type: String, required: true, enum: ['Hosteller', 'Day Scholar'] },
         members: {
             type: [MemberSchema],
             validate: {

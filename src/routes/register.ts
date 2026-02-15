@@ -23,6 +23,7 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
             leaderEmail,
             leaderWhatsApp,
             leaderRollNumber,
+            leaderResidency,
             members,
         } = req.body;
         // ... (rest of validation same as before) ...
@@ -32,11 +33,13 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
             leaderEmail: leaderEmail.trim().toLowerCase(),
             leaderWhatsApp: leaderWhatsApp.trim(),
             leaderRollNumber: leaderRollNumber.trim().toUpperCase(),
+            leaderResidency: leaderResidency,
             members: members.map((m: any) => ({
                 name: m.name.trim(),
                 email: m.email.trim().toLowerCase(),
                 whatsApp: m.whatsApp.trim(),
                 rollNumber: m.rollNumber.trim().toUpperCase(),
+                residency: m.residency,
             })),
         });
 
