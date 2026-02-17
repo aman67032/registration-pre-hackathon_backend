@@ -25,6 +25,8 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
             leaderRollNumber,
             leaderResidency,
             leaderMessFood,
+            leaderCourse,
+            leaderBatch,
             members,
         } = req.body;
         // ... (rest of validation same as before) ...
@@ -36,6 +38,8 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
             leaderRollNumber: leaderRollNumber.trim().toUpperCase(),
             leaderResidency: leaderResidency,
             leaderMessFood: leaderMessFood,
+            leaderCourse: leaderCourse,
+            leaderBatch: leaderBatch.trim(),
             members: members.map((m: any) => ({
                 name: m.name.trim(),
                 email: m.email.trim().toLowerCase(),
@@ -43,6 +47,8 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
                 rollNumber: m.rollNumber.trim().toUpperCase(),
                 residency: m.residency,
                 messFood: m.messFood,
+                course: m.course,
+                batch: m.batch.trim(),
             })),
         });
 

@@ -179,24 +179,32 @@ router.get('/export', authMiddleware, async (req: AuthRequest, res: Response): P
             'Leader Email',
             'Leader WhatsApp',
             'Leader Roll Number',
+            'Leader Course',
+            'Leader Batch',
             'Leader Residency',
             'Leader Mess Food',
             'Member 1 Name',
             'Member 1 Email',
             'Member 1 WhatsApp',
             'Member 1 Roll Number',
+            'Member 1 Course',
+            'Member 1 Batch',
             'Member 1 Residency',
             'Member 1 Mess Food',
             'Member 2 Name',
             'Member 2 Email',
             'Member 2 WhatsApp',
             'Member 2 Roll Number',
+            'Member 2 Course',
+            'Member 2 Batch',
             'Member 2 Residency',
             'Member 2 Mess Food',
             'Member 3 Name',
             'Member 3 Email',
             'Member 3 WhatsApp',
             'Member 3 Roll Number',
+            'Member 3 Course',
+            'Member 3 Batch',
             'Member 3 Residency',
             'Member 3 Mess Food',
             'Registration Date',
@@ -209,6 +217,8 @@ router.get('/export', authMiddleware, async (req: AuthRequest, res: Response): P
                 team.leaderEmail,
                 team.leaderWhatsApp,
                 team.leaderRollNumber,
+                (team as any).leaderCourse || '',
+                (team as any).leaderBatch || '',
                 team.leaderResidency,
                 team.leaderMessFood ? 'Yes' : 'No',
             ];
@@ -222,11 +232,13 @@ router.get('/export', authMiddleware, async (req: AuthRequest, res: Response): P
                         member.email,
                         member.whatsApp,
                         member.rollNumber,
+                        (member as any).course || '',
+                        (member as any).batch || '',
                         member.residency,
                         member.messFood ? 'Yes' : 'No'
                     );
                 } else {
-                    row.push('', '', '', '', '', '');
+                    row.push('', '', '', '', '', '', '', '');
                 }
             }
 
