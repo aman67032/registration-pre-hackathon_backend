@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './db';
 import registerRouter from './routes/register';
+import adminRouter from './routes/admin';
 
 const app = express();
 const PORT = 5000;
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api', registerRouter);
+app.use('/api/admin', adminRouter);
 
 // Health check
 app.get('/', (_req, res) => {

@@ -8,9 +8,13 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.3.1",
     "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.5.0"
   },
   "devDependencies": {
