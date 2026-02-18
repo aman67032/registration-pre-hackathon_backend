@@ -29,7 +29,38 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
             leaderBatch,
             members,
         } = req.body;
-        // ... (rest of validation same as before) ...
+
+        // Collect all emails (leader + members) normalized to lowercase
+        const allEmails = [
+            leaderEmail.trim().toLowerCase(),
+            ...members.map((m: any) => m.email.trim().toLowerCase()),
+        ];
+
+        // Check if any email already exists in the database
+        const existingTeams = await Team.find({
+            $or: [
+                { leaderEmail: { $in: allEmails } },
+                { 'members.email': { $in: allEmails } },
+            ],
+        });
+
+        if (existingTeams.length > 0) {
+            // Gather all emails from matching teams
+            const existingEmails = new Set<string>();
+            for (const t of existingTeams) {
+                existingEmails.add(t.leaderEmail);
+                for (const m of t.members) {
+                    existingEmails.add(m.email);
+                }
+            }
+            const duplicates = allEmails.filter((e) => existingEmails.has(e));
+            res.status(409).json({
+                success: false,
+                message: `These email(s) are already registered: ${duplicates.join(', ')}`,
+            });
+            return;
+        }
+
         const team = new Team({
             teamName: teamName.trim(),
             leaderName: leaderName.trim(),
