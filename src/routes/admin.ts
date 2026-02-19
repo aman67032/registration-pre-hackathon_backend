@@ -56,6 +56,47 @@ router.post('/login', async (req: Request, res: Response): Promise<void> => {
     }
 });
 
+// ─── PUBLIC STATS (no auth) ─────────────────────────────────────────────────
+router.get('/stats', async (_req: Request, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const teams = await Team.find().lean();
+
+        const totalTeams = teams.length;
+        const batchCounts: Record<string, number> = {};
+        const residencyCounts: Record<string, number> = { Hosteller: 0, 'Day Scholar': 0 };
+
+        for (const team of teams) {
+            // Leader
+            const lb = (team as any).leaderBatch || 'Unknown';
+            batchCounts[lb] = (batchCounts[lb] || 0) + 1;
+            if (team.leaderResidency === 'Hosteller') residencyCounts['Hosteller']++;
+            else residencyCounts['Day Scholar']++;
+
+            // Members
+            for (const m of team.members) {
+                const mb = (m as any).batch || 'Unknown';
+                batchCounts[mb] = (batchCounts[mb] || 0) + 1;
+                if (m.residency === 'Hosteller') residencyCounts['Hosteller']++;
+                else residencyCounts['Day Scholar']++;
+            }
+        }
+
+        const totalPeople = totalTeams * 4;
+
+        res.status(200).json({
+            success: true,
+            totalTeams,
+            totalPeople,
+            batchCounts,
+            residencyCounts,
+        });
+    } catch (error: any) {
+        console.error('Stats error:', error);
+        res.status(500).json({ success: false, message: 'Server error fetching stats' });
+    }
+});
+
 // ─── GET REGISTRATIONS WITH FILTERS ─────────────────────────────────────────
 router.get('/registrations', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
     try {

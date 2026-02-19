@@ -14,6 +14,18 @@ const isValidWhatsApp = (phone: string): boolean => {
 };
 
 router.post('/register', async (req: Request, res: Response): Promise<void> => {
+    // ─── REGISTRATION LOCK ──────────────────────────────────────────────────
+    // Set this to true to stop receiving registrations via API
+    const REGISTRATION_LOCKED = true;
+
+    if (REGISTRATION_LOCKED) {
+        res.status(403).json({
+            success: false,
+            message: 'Registrations are now closed. Thank you for your interest! 🔒'
+        });
+        return;
+    }
+
     try {
         await connectDB(); // Ensure DB is connected
 
