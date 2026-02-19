@@ -7,7 +7,7 @@ interface IMember {
     rollNumber: string;
     residency: 'Hosteller' | 'Day Scholar';
     messFood?: boolean;
-    course: 'BTech' | 'BBA' | 'BDes';
+    course: 'BTech' | 'BBA' | 'BDes' | 'HSB';
     batch: string;
 }
 
@@ -19,7 +19,7 @@ export interface ITeam extends Document {
     leaderRollNumber: string;
     leaderResidency: 'Hosteller' | 'Day Scholar';
     leaderMessFood?: boolean;
-    leaderCourse: 'BTech' | 'BBA' | 'BDes';
+    leaderCourse: 'BTech' | 'BBA' | 'BDes' | 'HSB';
     leaderBatch: string;
     members: IMember[];
     createdAt: Date;
@@ -32,7 +32,7 @@ const MemberSchema = new Schema<IMember>({
     rollNumber: { type: String, required: true, trim: true, uppercase: true },
     residency: { type: String, required: true, enum: ['Hosteller', 'Day Scholar'] },
     messFood: { type: Boolean, required: false },
-    course: { type: String, required: true, enum: ['BTech', 'BBA', 'BDes'] },
+    course: { type: String, required: true, enum: ['BTech', 'BBA', 'BDes', 'HSB'] },
     batch: { type: String, required: true, trim: true },
 });
 
@@ -45,7 +45,7 @@ const TeamSchema = new Schema<ITeam>(
         leaderRollNumber: { type: String, required: true, trim: true, uppercase: true },
         leaderResidency: { type: String, required: true, enum: ['Hosteller', 'Day Scholar'] },
         leaderMessFood: { type: Boolean, required: false },
-        leaderCourse: { type: String, required: true, enum: ['BTech', 'BBA', 'BDes'] },
+        leaderCourse: { type: String, required: true, enum: ['BTech', 'BBA', 'BDes', 'HSB'] },
         leaderBatch: { type: String, required: true, trim: true },
         members: {
             type: [MemberSchema],
