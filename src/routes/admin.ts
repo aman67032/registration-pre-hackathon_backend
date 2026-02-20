@@ -342,6 +342,36 @@ router.get('/export', authMiddleware, async (req: AuthRequest, res: Response): P
     }
 });
 
+// Toggle Check-in Status with Details
+router.put('/checkin/:id', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const { id } = req.params;
+        const { status, roomNumber, allocatedTeamId } = req.body; // Expanded input
+
+        const team = await Team.findById(id);
+        if (!team) {
+            res.status(404).json({ success: false, message: 'Team not found' });
+            return;
+        }
+
+        team.isCheckedIn = status;
+        if (roomNumber !== undefined) team.roomNumber = roomNumber;
+        if (allocatedTeamId !== undefined) team.allocatedTeamId = allocatedTeamId;
+
+        await team.save();
+
+        res.status(200).json({
+            success: true,
+            message: `Team check-in updated successfully`,
+            team
+        });
+    } catch (error: any) {
+        console.error('Check-in error:', error);
+        res.status(500).json({ success: false, message: 'Server error updating check-in status' });
+    }
+});
+
 // Toggle Extension Board Status
 router.put('/extension-board/:id', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
     try {
@@ -366,6 +396,103 @@ router.put('/extension-board/:id', authMiddleware, async (req: AuthRequest, res:
     } catch (error: any) {
         console.error('Extension board update error:', error);
         res.status(500).json({ success: false, message: 'Server error updating extension board status' });
+    }
+});
+
+
+// Admin On-Spot Registration
+router.post('/register', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const teamData = req.body; // Expects full team object
+
+        // Basic validation (can be shared with public reg if refactored)
+        const existingTeam = await Team.findOne({ teamName: teamData.teamName });
+        if (existingTeam) {
+            res.status(400).json({ success: false, message: 'Team name already exists' });
+            return;
+        }
+
+        // Ensure no duplicate emails for leader
+        const existingLeader = await Team.findOne({
+            $or: [{ leaderEmail: teamData.leaderEmail }, { 'members.email': teamData.leaderEmail }]
+        });
+        if (existingLeader) {
+            res.status(400).json({ success: false, message: `Leader email ${teamData.leaderEmail} is already registered` });
+            return;
+        }
+
+        // Check duplicate emails for members
+        for (const member of teamData.members) {
+            const existingMember = await Team.findOne({
+                $or: [{ leaderEmail: member.email }, { 'members.email': member.email }]
+            });
+            if (existingMember) {
+                res.status(400).json({ success: false, message: `Member email ${member.email} is already registered` });
+                return;
+            }
+        }
+
+        const newTeam = new Team(teamData);
+        await newTeam.save();
+
+        res.status(201).json({ success: true, message: 'Team registered successfully', team: newTeam });
+
+    } catch (error: any) {
+        console.error('Admin Register Error:', error);
+        res.status(500).json({ success: false, message: 'Server error registering team' });
+    }
+});
+
+
+// Swap Members Endpoint
+router.put('/swap-members', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const { team1Id, member1Email, team2Id, member2Email } = req.body;
+
+        const team1 = await Team.findById(team1Id);
+        const team2 = await Team.findById(team2Id);
+
+        if (!team1 || !team2) {
+            res.status(404).json({ success: false, message: 'One or both teams not found' });
+            return;
+        }
+
+        // Helper to find and remove member (or leader as pseudo-member for swapping logic if needed, but simple member swap first)
+        // NOTE: Swapping leaders is complex due to schema structure. Assuming member-only swap for simplicity or handling leader manually.
+        // Let's implement member-to-member swap first.
+
+        const m1Index = team1.members.findIndex(m => m.email === member1Email);
+        const m2Index = team2.members.findIndex(m => m.email === member2Email);
+
+        if (m1Index === -1 || m2Index === -1) {
+            res.status(400).json({ success: false, message: 'Member not found in respective team' });
+            return;
+        }
+
+        // Swap
+        const member1 = team1.members[m1Index];
+        const member2 = team2.members[m2Index];
+
+        // Mongoose subdocuments might be tricky, clone strictly
+        const m1Object = (member1 as any).toObject();
+        const m2Object = (member2 as any).toObject();
+        delete (m1Object as any)._id; // Let mongo generate new IDs or keep logic simple
+        delete (m2Object as any)._id;
+
+
+        team1.members[m1Index] = m2Object as any; // Type casting for simplicity here
+        team2.members[m2Index] = m1Object as any;
+
+        await team1.save();
+        await team2.save();
+
+        res.status(200).json({ success: true, message: 'Members swapped successfully' });
+
+    } catch (error: any) {
+        console.error('Swap Error:', error);
+        res.status(500).json({ success: false, message: 'Server error swapping members' });
     }
 });
 

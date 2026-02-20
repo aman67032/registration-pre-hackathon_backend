@@ -23,6 +23,8 @@ export interface ITeam extends Document {
     leaderBatch: string;
     isCheckedIn: boolean;
     extensionBoardGiven: boolean;
+    roomNumber?: string; // e.g., "EB1-105"
+    allocatedTeamId?: string; // e.g., "T-10"
     members: IMember[];
     createdAt: Date;
 }
@@ -51,6 +53,8 @@ const TeamSchema = new Schema<ITeam>(
         leaderBatch: { type: String, required: true, trim: true },
         isCheckedIn: { type: Boolean, default: false },
         extensionBoardGiven: { type: Boolean, default: false },
+        roomNumber: { type: String },
+        allocatedTeamId: { type: String },
         members: {
             type: [MemberSchema],
             validate: {
