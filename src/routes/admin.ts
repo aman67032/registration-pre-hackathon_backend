@@ -83,17 +83,47 @@ router.get('/stats', async (_req: Request, res: Response): Promise<void> => {
         }
 
         const totalPeople = totalTeams * 4;
+        // Count checked-in teams
+        const totalCheckedIn = teams.filter((t: any) => t.isCheckedIn).length;
 
         res.status(200).json({
             success: true,
             totalTeams,
             totalPeople,
+            totalCheckedIn,
             batchCounts,
             residencyCounts,
         });
     } catch (error: any) {
         console.error('Stats error:', error);
         res.status(500).json({ success: false, message: 'Server error fetching stats' });
+    }
+});
+
+// ─── TOGGLE CHECK-IN STATUS ─────────────────────────────────────────────────
+router.put('/checkin/:id', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const { id } = req.params;
+        const { status } = req.body; // Expect boolean
+
+        const team = await Team.findById(id);
+        if (!team) {
+            res.status(404).json({ success: false, message: 'Team not found' });
+            return;
+        }
+
+        team.isCheckedIn = status;
+        await team.save();
+
+        res.status(200).json({
+            success: true,
+            message: `Team ${status ? 'checked in' : 'checked out'} successfully`,
+            team
+        });
+    } catch (error: any) {
+        console.error('Check-in error:', error);
+        res.status(500).json({ success: false, message: 'Server error updating check-in status' });
     }
 });
 

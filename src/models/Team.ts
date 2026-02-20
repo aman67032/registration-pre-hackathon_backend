@@ -21,6 +21,7 @@ export interface ITeam extends Document {
     leaderMessFood?: boolean;
     leaderCourse: 'BTech' | 'BBA' | 'BDes' | 'HSB';
     leaderBatch: string;
+    isCheckedIn: boolean;
     members: IMember[];
     createdAt: Date;
 }
@@ -47,6 +48,7 @@ const TeamSchema = new Schema<ITeam>(
         leaderMessFood: { type: Boolean, required: false },
         leaderCourse: { type: String, required: true, enum: ['BTech', 'BBA', 'BDes', 'HSB'] },
         leaderBatch: { type: String, required: true, trim: true },
+        isCheckedIn: { type: Boolean, default: false },
         members: {
             type: [MemberSchema],
             validate: {
