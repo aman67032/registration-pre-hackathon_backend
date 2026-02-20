@@ -25,6 +25,8 @@ export interface ITeam extends Document {
     extensionBoardGiven: boolean;
     roomNumber?: string; // e.g., "EB1-105"
     allocatedTeamId?: string; // e.g., "T-10"
+    problemStatement?: string;
+    githubRepo?: string;
     members: IMember[];
     createdAt: Date;
 }
@@ -55,6 +57,8 @@ const TeamSchema = new Schema<ITeam>(
         extensionBoardGiven: { type: Boolean, default: false },
         roomNumber: { type: String },
         allocatedTeamId: { type: String },
+        problemStatement: { type: String },
+        githubRepo: { type: String },
         members: {
             type: [MemberSchema],
             validate: {

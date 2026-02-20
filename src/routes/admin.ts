@@ -100,6 +100,38 @@ router.get('/stats', async (_req: Request, res: Response): Promise<void> => {
     }
 });
 
+// ─── PUBLIC TEAMS DATA (no auth) ────────────────────────────────────────────
+router.get('/teams-public', async (req: Request, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const room = req.query.room as string;
+
+        const filter: any = { problemStatement: { $exists: true, $ne: '' } };
+        if (room && room !== 'All') {
+            filter.roomNumber = room;
+        }
+
+        const teams = await Team.find(filter)
+            .select('teamName leaderName allocatedTeamId problemStatement githubRepo roomNumber')
+            .sort({ allocatedTeamId: 1 })
+            .lean();
+
+        // Get unique room numbers for filter tabs
+        const allRooms = await Team.distinct('roomNumber', { problemStatement: { $exists: true, $ne: '' } });
+        const rooms = allRooms.filter(Boolean).sort();
+
+        res.status(200).json({
+            success: true,
+            count: teams.length,
+            rooms,
+            data: teams,
+        });
+    } catch (error: any) {
+        console.error('Teams public error:', error);
+        res.status(500).json({ success: false, message: 'Server error fetching teams' });
+    }
+});
+
 // ─── TOGGLE CHECK-IN STATUS ─────────────────────────────────────────────────
 router.put('/checkin/:id', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
     try {

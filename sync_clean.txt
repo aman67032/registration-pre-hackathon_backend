@@ -1,0 +1,336 @@
+﻿[dotenv@17.3.1] injecting env (1) from .env -- tip:   enable debug logging with { debug: true }
+ DRY RUN MODE  No changes will be written to the database.
+   Run with --apply to commit changes.
+
+ Connected to MongoDB
+
+ Reading CSV from: F:\Registration_Pre-hackthon\registration_prehackthon\public\final.csv
+   Parsed 284 rows
+
+  Team "knight vision" has no leader, skipping
+  Team "out of bounce" has no leader, skipping
+  Team "akira" has no leader, skipping
+   Grouped into 69 teams
+
+ Found 65 teams in database
+
+
+                    CHANGES REPORT                        
+
+
+ UPDATE "Los_Consortium" (CSV: "Los_Consortium"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "32"
+
+ UPDATE "Jklufi" (CSV: "Jklufi"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "57"
+
+ UPDATE "Hackers" (CSV: "Hackers"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "24"
+
+ UPDATE "NextGen Innovators" (CSV: "NextGen Innovators"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "45"
+
+ UPDATE "Tech Titans" (CSV: "Tech Titans"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "56"
+
+ UPDATE "RTX 5090" (CSV: "RTX 5090"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "44"
+
+ UPDATE "Code no senshi" (CSV: "Code no senshi"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "16"
+
+ UPDATE "Error 404" (CSV: "Error 404"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "31"
+
+ UPDATE "Goon Lords" (CSV: "Goon Lords"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "42"
+
+ UPDATE "Rapid resolve" (CSV: "Rapid resolve"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "53"
+
+ UPDATE "zero bugs" (CSV: "zero bugs"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "25"
+
+ UPDATE "CitiZen" (CSV: "CitiZen"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "26"
+
+ UPDATE "4 Pillars" (CSV: "4 Pillars"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "43"
+    members removed: Ayush jaiswal (ayushjaiswal@jklu.edu.in)
+    members added: Aditra choudhary (adityasinghnayal@jklu.edu.in)
+
+ UPDATE "FLUX" (CSV: "FLUX"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "23"
+
+ UPDATE "SYNTAX--INIT" (CSV: "SYNTAX--INIT"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+
+ UPDATE "Team Matrix" (CSV: "Team Matrix"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+
+ UPDATE "InnoVenture" (CSV: "InnoVenture"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "54"
+
+ UPDATE "Web warriors" (CSV: "Web warriors"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "27"
+
+ UPDATE "Not coders" (CSV: "Not coders"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "18"
+
+ UPDATE "Dream debugger" (CSV: "Dream debugger"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "14"
+
+ UPDATE "SMASH KARTS" (CSV: "SMASH KARTS"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "7"
+
+ UPDATE "Dev404" (CSV: "Dev404"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "9"
+
+ UPDATE "The Fresh Stack" (CSV: "The Fresh Stack"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "21"
+
+ UPDATE "Breakpoint" (CSV: "Breakpoint"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "51"
+
+ UPDATE "Logicloop" (CSV: "Logicloop"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "52"
+
+ UPDATE "CodeNova" (CSV: "CodeNova"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "49"
+
+ UPDATE "Codera Clan" (CSV: "Codera Clan"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "35"
+
+ UPDATE "NTlooPs" (CSV: "NTlooPs"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "19"
+
+ UPDATE "Infinite Loopers" (CSV: "Infinite Loopers"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "29"
+
+ UPDATE "Wi-Wi Club" (CSV: "Wi-Wi Club"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+
+ UPDATE "XLNC" (CSV: "XLNC"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "12"
+
+ UPDATE "Overclocked" (CSV: "Overclocked"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "2"
+
+ UPDATE "Fantastic 4" (CSV: "Fantastic 4"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "8"
+
+ UPDATE "TERMINAL STACKERS" (CSV: "TERMINAL STACKERS"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "38"
+
+ UPDATE "Bugslayers" (CSV: "Bugslayers"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "46"
+
+ UPDATE "Team RedApple" (CSV: "Team RedApple"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "5"
+
+ UPDATE "Error-4.0" (CSV: "Error-4.0"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "15"
+
+ UPDATE "NYXCODERS" (CSV: "NYXCODERS"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "36"
+
+ UPDATE "AI Avengers" (CSV: "AI Avengers"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "48"
+
+ UPDATE "Runtime T.EEROR" (CSV: "Runtime T.EEROR"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "1"
+
+ UPDATE "The Hack Pack" (CSV: "The Hack Pack"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "6"
+
+ UPDATE "Jeffrey Codes" (CSV: "Jeffrey Codes"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+
+ UPDATE "We Come In Peace" (CSV: "We Come In Peace"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "17"
+
+ UPDATE "Butter Chicken" (CSV: "Butter Chicken"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "34"
+
+ UPDATE "Tetra Forge" (CSV: "Tetra Forge"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "20"
+
+ UPDATE "team" (CSV: "team"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "11"
+
+ UPDATE "ghost protocol" (CSV: "ghost protocol"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "50"
+
+ UPDATE "Hackathon_tech" (CSV: "Hackathon_tech"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "39"
+
+ UPDATE "VHack" (CSV: "VHack"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+
+ UPDATE "ALGORI-THEM" (CSV: "ALGORI-THEM"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "13"
+
+ UPDATE "team10" (CSV: "team10"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "10"
+
+ UPDATE "HACK2D" (CSV: "HACK2D"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "37"
+
+ UPDATE "THE 404s" (CSV: "THE 404s"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "28"
+
+ UPDATE "Orion" (CSV: "Orion"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "22"
+
+ UPDATE "Team Paradise" (CSV: "Team Paradise"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "55"
+
+ UPDATE "SheCodes" (CSV: "SheCodes"):
+    isCheckedIn: false  true
+    allocatedTeamId: ""  "33"
+
+  SKIP "Knight Vision"  has 1 member(s) instead of 3
+
+ INSERT "spark x":
+   Leader: harshit patidar (harshitpatoidar@jklu.edu.in)
+   Members: Sarthak pandit, j, Hardik Lavti
+   Checked in: true, Board: true
+   Team #: 59
+
+ UPDATE "Team VAD" (CSV: "vad"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    allocatedTeamId: ""  "60"
+    leader: "Nandamuri Dhanush" (nandamurinagasaimanikantadhanush@jklu.edu.in)  "abhishek" (sirimamillaabhishek@jjlu.edu.in)
+
+ UPDATE "Error 404" (CSV: "errror404"):
+    isCheckedIn: false  true
+    extensionBoardGiven: false  true
+    leader: "Mayank Gautam" (mayank@jklu.edu.in)  "mayank gautam" (mayankgautam@jklu.edu.in)
+
+
+            SKIPPED STANDALONE INDIVIDUALS                
+
+
+  "rakshika sharma" (rakshikasharma@jkle.edu.in)  no team name, skipping
+  "gandla vipuleshwar" (gandlavipuleshwar@jklu.edu.in)  no team name, skipping
+  "varun rao thumula" (varunraothumula@jklu.edu.in)  no team name, skipping
+  "Nandamuri Dhanush" (mamda,urinagasaimanikantadhanush@jklu.edu.in)  no team name, skipping
+  "Gyan Chechani" (gyanchechani@jklu.edu.in)  no team name, skipping
+  "Ankit Joshi" (ankitjoshi@jklu.edu.in)  no team name, skipping
+  "Avika Soni" (avikasonijain@jklu.edu.in)  no team name, skipping
+
+
+                      SUMMARY                            
+
+    Updated: 58 teams
+    Inserted: 1 new teams
+     Skipped: 1 (incomplete)
+      Standalone individuals: 7
+
+     This was a DRY RUN. Run with --apply to commit changes.
