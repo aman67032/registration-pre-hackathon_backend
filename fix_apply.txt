@@ -1,0 +1,84 @@
+﻿[dotenv@17.3.1] injecting env (1) from .env -- tip: ≡ƒöÉ prevent committing .env to code: https://dotenvx.com/precommit
+APPLY MODE -- Changes WILL be written.
+
+Connected to MongoDB
+
+=== STEP 1: Normalizing room numbers ===
+
+  "Team Paradise": "EB2-202" -> "EB2 - 202"
+  "Orion": "204" -> "EB2 - 204"
+  "THE 404s": "202" -> "EB2 - 202"
+  "HACK2D": "204" -> "EB2 - 204"
+  "team10": "206" -> "EB2 - 206"
+  "ALGORI-THEM": "EB2-206" -> "EB2 - 206"
+  "VHack": "205" -> "EB2 - 205"
+  "Hackathon_tech": "EB-2 104" -> "EB2 - 104"
+  "ghost protocol": "EB 2-105" -> "EB2 - 105"
+  "team": "204" -> "EB2 - 204"
+  "Tetra Forge": "206" -> "EB2 - 206"
+  "Butter Chicken": "205" -> "EB2 - 205"
+  "We Come In Peace": "204" -> "EB2 - 204"
+  "Jeffrey Codes": "104" -> "EB2 - 104"
+  "The Hack Pack": "206" -> "EB2 - 206"
+  "AI Avengers": "205" -> "EB2 - 205"
+  "NYXCODERS": "204" -> "EB2 - 204"
+  "Error-4.0": "104" -> "EB2 - 104"
+  "Team RedApple": "105" -> "EB2 - 105"
+  "TERMINAL STACKERS": "104" -> "EB2 - 104"
+  "Fantastic 4": "206" -> "EB2 - 206"
+  "Overclocked": "206" -> "EB2 - 206"
+  "XLNC": "205" -> "EB2 - 205"
+  "Wi-Wi Club": "Eb2-104" -> "EB2 - 104"
+  "Infinite Loopers": "205" -> "EB2 - 205"
+  "NTlooPs": "204" -> "EB2 - 204"
+  "Codera Clan": "EB 2 -202" -> "EB2 - 202"
+  "CodeNova": "205" -> "EB2 - 205"
+  "Breakpoint": "EB-2 205" -> "EB2 - 205"
+  "The Fresh Stack": "EB-2 205" -> "EB2 - 205"
+  "Dev404": "206" -> "EB2 - 206"
+  "SMASH KARTS": "104" -> "EB2 - 104"
+  "Not coders": "202" -> "EB2 - 202"
+  "InnoVenture": "104" -> "EB2 - 104"
+  "Team Matrix": "Eb2 - 104" -> "EB2 - 104"
+  "SYNTAX--INIT": "EB-2 105" -> "EB2 - 105"
+  "FLUX": "205" -> "EB2 - 205"
+  "4 Pillars": "105" -> "EB2 - 105"
+  "CitiZen": "202" -> "EB2 - 202"
+  "zero bugs": "204" -> "EB2 - 204"
+  "Akira": "204" -> "EB2 - 204"
+  "Rapid resolve": "EB2-104" -> "EB2 - 104"
+  "Goon Lords": "206" -> "EB2 - 206"
+  "Error 404": "104" -> "EB2 - 104"
+  "Code no senshi": "202" -> "EB2 - 202"
+  "RTX 5090": "206" -> "EB2 - 206"
+  "Tech Titans": "EB -2 (202)" -> "EB2 - 202"
+  "Hackers": "202" -> "EB2 - 202"
+  "syntax error": "105" -> "EB2 - 105"
+  "Los_Consortium": "EB2-104" -> "EB2 - 104"
+
+Room numbers fixed: 50
+
+=== STEP 2: Re-syncing missing submission teams ===
+
+  UPDATE "Jklufi": PS updated, GitHub updated, Room: "" -> "EB2"
+  UPDATE "SheCodes": PS updated, GitHub updated, Room: "" -> "EB2 - 105"
+  UPDATE "Runtime T.EEROR": PS updated, GitHub updated, Room: "" -> "EB2 - 104"
+  UPDATE "spark x": PS updated, GitHub updated, Room: "" -> "2023btech034"
+  UPDATE "Braincodes": PS updated, GitHub updated, Room: "" -> "EB2 - 202", Team#: 31
+  UPDATE "Logicloop": PS updated, GitHub updated, Room: "" -> "EB2 - 204"
+  UPDATE "Dream debugger": PS updated, GitHub updated, Room: "" -> "EB02-205"
+  UPDATE "Web warriors": PS updated, GitHub updated, Room: "" -> "EB2 - 105"
+  NOT FOUND: "Knight Vision"
+  UPDATE "Team VAD": PS updated, Room: "" -> "EB2 - 105", Team#: 60
+  NOT FOUND: "Out of Bounds"
+  UPDATE "Bugslayers": PS updated, GitHub updated, Room: "" -> "EB2 - 205"
+  UPDATE "NextGen Innovators": PS updated, Room: "" -> "EB2 - 204"
+
+Submission sync: 11 updated, 2 not found
+
+===== SUMMARY =====
+Room numbers normalized: 50
+Submissions re-synced: 11
+Still not found: 2
+
+All changes applied!
