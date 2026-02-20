@@ -11,7 +11,7 @@ const PORT = 5000;
 // Middleware
 app.use(cors({
     origin: '*', // Allow all origins (for hackathon/dev), restricts to specific domains in prod ideally
-    methods: ['GET', 'POST', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
 }));
 app.use(express.json());
