@@ -342,4 +342,31 @@ router.get('/export', authMiddleware, async (req: AuthRequest, res: Response): P
     }
 });
 
+// Toggle Extension Board Status
+router.put('/extension-board/:id', authMiddleware, async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+        await connectDB();
+        const { id } = req.params;
+        const { status } = req.body; // Expect boolean
+
+        const team = await Team.findById(id);
+        if (!team) {
+            res.status(404).json({ success: false, message: 'Team not found' });
+            return;
+        }
+
+        team.extensionBoardGiven = status;
+        await team.save();
+
+        res.status(200).json({
+            success: true,
+            message: `Extension board status updated for team ${team.teamName}`,
+            team
+        });
+    } catch (error: any) {
+        console.error('Extension board update error:', error);
+        res.status(500).json({ success: false, message: 'Server error updating extension board status' });
+    }
+});
+
 export default router;

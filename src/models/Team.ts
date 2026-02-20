@@ -22,6 +22,7 @@ export interface ITeam extends Document {
     leaderCourse: 'BTech' | 'BBA' | 'BDes' | 'HSB';
     leaderBatch: string;
     isCheckedIn: boolean;
+    extensionBoardGiven: boolean;
     members: IMember[];
     createdAt: Date;
 }
@@ -49,6 +50,7 @@ const TeamSchema = new Schema<ITeam>(
         leaderCourse: { type: String, required: true, enum: ['BTech', 'BBA', 'BDes', 'HSB'] },
         leaderBatch: { type: String, required: true, trim: true },
         isCheckedIn: { type: Boolean, default: false },
+        extensionBoardGiven: { type: Boolean, default: false },
         members: {
             type: [MemberSchema],
             validate: {
